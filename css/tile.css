@@ -4,6 +4,8 @@
 .dif-tile {
     cursor: pointer;
     transition: transform 0.2s ease;
+    max-width: 100%;  /* Ensure tiles don't overflow */
+    position: relative;  /* For proper positioning */
 }
 
 .dif-tile:hover {
@@ -18,6 +20,22 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    height: 100%;  /* Fill the tile height */
+}
+
+/* Image container styling */
+.tile-image {
+    margin: -20px -20px 15px -20px; /* Negative margin to extend to edges */
+    max-height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.tile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Badge styling */
@@ -28,6 +46,7 @@
     background: #fff;
     border: 1px solid #333;
     border-radius: 3px;
+    z-index: 1;  /* Ensure badge stays above image */
 }
 
 /* Word group container */
@@ -35,6 +54,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex: 1;  /* Take up remaining space */
 }
 
 /* Individual word styling */
@@ -108,6 +128,34 @@
 }
 
 /* Collection-specific styling */
+.dif-tile[data-is-collection="true"] {
+    max-width: 100%;  /* Ensure collection tiles don't expand beyond container */
+}
+
 .dif-tile[data-is-collection="true"] .tile-frame {
     border-style: dashed;
+    background: rgba(255, 255, 255, 0.9);  /* Slightly transparent background */
+    min-height: 180px;  /* Slightly smaller than regular tiles */
+}
+
+/* Grid layout adjustments */
+@media screen and (min-width: 768px) {
+    .dif-tile {
+        width: calc(33.333% - 20px);  /* Three columns with gap */
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dif-tile {
+        width: calc(50% - 20px);  /* Two columns with gap */
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dif-tile {
+        width: 100%;  /* Single column */
+        margin: 10px 0;
+    }
 }
