@@ -4,6 +4,7 @@
 .dif-tile {
     cursor: pointer;
     transition: transform 0.2s ease;
+    width: 100%;
 }
 
 .dif-tile:hover {
@@ -18,14 +19,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-/* Image styling */
-.preview-image {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    margin-bottom: 15px;
+    position: relative; /* Add this */
 }
 
 /* Badge styling */
@@ -36,6 +30,7 @@
     background: #fff;
     border: 1px solid #333;
     border-radius: 3px;
+    margin-bottom: 10px;
 }
 
 /* Word group container */
@@ -53,23 +48,8 @@
     position: relative;
     text-align: center;
     font-size: 14px;
-}
-
-/* Word type-specific styling */
-.preview-word.subject {
-    border-color: #2a9d8f;
-}
-
-.preview-word.class {
-    border-color: #6A0572;
-}
-
-.preview-word.breadcrumb {
-    border-color: #e76f51;
-}
-
-.preview-word.colorword {
-    border-color: #f4a261;
+    width: calc(100% - 30px); /* Account for the bars */
+    margin: 0 15px; /* Center the word box */
 }
 
 /* Add horizontal bars for each word type */
@@ -83,30 +63,6 @@
     height: 2px;
 }
 
-/* Subject bars */
-.preview-word.subject::before,
-.preview-word.subject::after {
-    background-color: #2a9d8f;
-}
-
-/* Class bars */
-.preview-word.class::before,
-.preview-word.class::after {
-    background-color: #6A0572;
-}
-
-/* Breadcrumb bars */
-.preview-word.breadcrumb::before,
-.preview-word.breadcrumb::after {
-    background-color: #e76f51;
-}
-
-/* Color word bars */
-.preview-word.colorword::before,
-.preview-word.colorword::after {
-    background-color: #f4a261;
-}
-
 /* Position the bars */
 .preview-word::before {
     left: -15px;
@@ -116,10 +72,44 @@
     right: -15px;
 }
 
+/* Word type-specific styling */
+.preview-word.subject {
+    border-color: #2a9d8f;
+}
+.preview-word.subject::before,
+.preview-word.subject::after {
+    background-color: #2a9d8f;
+}
+
+.preview-word.class {
+    border-color: #6A0572;
+}
+.preview-word.class::before,
+.preview-word.class::after {
+    background-color: #6A0572;
+}
+
+.preview-word.breadcrumb {
+    border-color: #e76f51;
+}
+.preview-word.breadcrumb::before,
+.preview-word.breadcrumb::after {
+    background-color: #e76f51;
+}
+
+.preview-word.colorword {
+    border-color: #f4a261;
+}
+.preview-word.colorword::before,
+.preview-word.colorword::after {
+    background-color: #f4a261;
+}
+
 /* Collection-specific styling */
 .dif-tile[data-is-collection="true"] .tile-frame {
     border-style: dashed;
 }
+
 
 /* Responsive adjustments */
 @media screen and (min-width: 768px) {
