@@ -48,13 +48,12 @@ export class DifExpander {
     async getRecordContent(recordId, imageId) {
         // Get the tile element to access its data
         const tile = document.querySelector(`[data-supabase-id="${recordId}"]`);
-        const imageElement = tile.querySelector('.tile-image img');
+        const imageElement = tile.querySelector('.preview-image');  // Changed from '.tile-image img'
         
         // Get image source if it exists
         const imageSrc = imageElement ? imageElement.src : 'https://www.neh.gov/sites/default/files/2019-09/battle-new-orleans.jpg';
-
-        // Placeholder for Supabase query
-        // For now, return test data
+    
+        // Rest of the code remains the same
         return {
             type: tile.dataset.recordType,
             subject: tile.querySelector('.preview-word.subject').textContent,
@@ -69,6 +68,9 @@ export class DifExpander {
             image: imageSrc
         };
     }
+
+
+
 
     showContent(content) {
         // Build content HTML

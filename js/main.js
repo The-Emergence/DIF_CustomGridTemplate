@@ -57,19 +57,17 @@ class DifGrid {
         if (data.collectionId) {
             tile.dataset.collectionId = data.collectionId;
         }
-
+    
         if (data.imageId) {
             tile.dataset.imageId = data.imageId;
         }
-
+    
         tile.innerHTML = `
             <div class="tile-frame">
-                ${data.image ? `
-                    <div class="tile-image">
-                        <img src="${data.image}" alt="${data.subject}">
-                    </div>
-                ` : ''}
                 <div class="record-badge">${data.type}</div>
+                ${data.image ? `
+                    <img class="preview-image" src="${data.image}" alt="${data.subject}">
+                ` : ''}
                 <div class="preview-word-group">
                     <div class="preview-word subject">${data.subject}</div>
                     <div class="preview-word class">${data.class}</div>
@@ -78,9 +76,11 @@ class DifGrid {
                 </div>
             </div>
         `;
-
+    
         return tile;
     }
+
+
 }
 
 // Initialize the grid system
