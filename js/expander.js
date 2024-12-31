@@ -27,6 +27,7 @@ export class DifExpander {
 
     async handleTileClick(tile) {
         const recordId = tile.dataset.supabaseId;
+        const imageId = tile.dataset.imageId;
         
         // If clicking the same tile, collapse
         if (this.currentId === recordId && this.isExpanded) {
@@ -38,19 +39,26 @@ export class DifExpander {
         this.currentId = recordId;
 
         // Get record data (placeholder for Supabase integration)
-        const content = await this.getRecordContent(recordId);
+        const content = await this.getRecordContent(recordId, imageId);
         
         // Build and show content
         this.showContent(content);
     }
 
-    async getRecordContent(recordId) {
+    async getRecordContent(recordId, imageId) {
+        // Get the tile element to access its data
+        const tile = document.querySelector(`[data-supabase-id="${recordId}"]`);
+        const imageElement = tile.querySelector('.tile-image img');
+        
+        // Get image source if it exists
+        const imageSrc = imageElement ? imageElement.src : 'https://www.neh.gov/sites/default/files/2019-09/battle-new-orleans.jpg';
+
         // Placeholder for Supabase query
         // For now, return test data
         return {
-            type: 'person',
-            subject: 'Test Subject',
-            class: 'Test Class',
+            type: tile.dataset.recordType,
+            subject: tile.querySelector('.preview-word.subject').textContent,
+            class: tile.querySelector('.preview-word.class').textContent,
             description: 'Test description of the record...',
             breadcrumbs: ['Tag 1', 'Tag 2', 'Tag 3'],
             colorWords: ['Color 1', 'Color 2'],
@@ -58,7 +66,7 @@ export class DifExpander {
                 { text: 'Related Link 1', url: '#' },
                 { text: 'Related Link 2', url: '#' }
             ],
-            image: 'placeholder.jpg'
+            image: imageSrc
         };
     }
 

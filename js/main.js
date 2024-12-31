@@ -58,8 +58,17 @@ class DifGrid {
             tile.dataset.collectionId = data.collectionId;
         }
 
+        if (data.imageId) {
+            tile.dataset.imageId = data.imageId;
+        }
+
         tile.innerHTML = `
             <div class="tile-frame">
+                ${data.image ? `
+                    <div class="tile-image">
+                        <img src="${data.image}" alt="${data.subject}">
+                    </div>
+                ` : ''}
                 <div class="record-badge">${data.type}</div>
                 <div class="preview-word-group">
                     <div class="preview-word subject">${data.subject}</div>
