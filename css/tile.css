@@ -1,43 +1,44 @@
-/* Add these new styles and modifications */
+/* tile.css */
+
+/* Base tile styling */
+.dif-tile {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.dif-tile:hover {
+    transform: translateY(-2px);
+}
 
 .tile-frame {
     background: #fff;
     border: 1px solid #ddd;
     padding: 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.tile-content {
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    height: 100%;
 }
 
-.tile-image {
+/* Image styling */
+.preview-image {
     width: 100%;
-    height: 120px; /* Fixed height for consistency */
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.tile-image img {
-    width: 100%;
-    height: 100%;
+    height: 120px;
     object-fit: cover;
-    display: block;
+    margin-bottom: 15px;
 }
 
-.tile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex: 1;
+/* Badge styling */
+.record-badge {
+    align-self: flex-start;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 3px;
 }
 
-/* Update existing styles */
+/* Word group container */
 .preview-word-group {
     display: flex;
     flex-direction: column;
@@ -45,4 +46,99 @@
     flex: 1;
 }
 
-/* Keep your existing word-specific styles */
+/* Individual word styling */
+.preview-word {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Word type-specific styling */
+.preview-word.subject {
+    border-color: #2a9d8f;
+}
+
+.preview-word.class {
+    border-color: #6A0572;
+}
+
+.preview-word.breadcrumb {
+    border-color: #e76f51;
+}
+
+.preview-word.colorword {
+    border-color: #f4a261;
+}
+
+/* Add horizontal bars for each word type */
+.preview-word::before,
+.preview-word::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 2px;
+}
+
+/* Subject bars */
+.preview-word.subject::before,
+.preview-word.subject::after {
+    background-color: #2a9d8f;
+}
+
+/* Class bars */
+.preview-word.class::before,
+.preview-word.class::after {
+    background-color: #6A0572;
+}
+
+/* Breadcrumb bars */
+.preview-word.breadcrumb::before,
+.preview-word.breadcrumb::after {
+    background-color: #e76f51;
+}
+
+/* Color word bars */
+.preview-word.colorword::before,
+.preview-word.colorword::after {
+    background-color: #f4a261;
+}
+
+/* Position the bars */
+.preview-word::before {
+    left: -15px;
+}
+
+.preview-word::after {
+    right: -15px;
+}
+
+/* Collection-specific styling */
+.dif-tile[data-is-collection="true"] .tile-frame {
+    border-style: dashed;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+    .dif-tile {
+        width: calc(33.333% - 20px);
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dif-tile {
+        width: calc(50% - 20px);
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dif-tile {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
