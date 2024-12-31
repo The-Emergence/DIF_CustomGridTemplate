@@ -1,4 +1,4 @@
-// DifExpander.js
+// expander.js
 
 export class DifExpander {
     constructor() {
