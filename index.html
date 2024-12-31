@@ -14,12 +14,17 @@
         
         <!-- Main Grid Container -->
         <div class="dif-grid">
-            <!-- Test Tiles -->
+            <!-- Test Tile with Image -->
             <div class="dif-tile" 
                  data-supabase-id="123" 
                  data-record-type="person" 
-                 data-collection-id="456">
+                 data-collection-id="456"
+                 data-image-id="img123">
                 <div class="tile-frame">
+                    <div class="tile-image">
+                        <img src="https://www.neh.gov/sites/default/files/2019-09/battle-new-orleans.jpg" 
+                             alt="Battle of New Orleans">
+                    </div>
                     <div class="record-badge">Person</div>
                     <div class="preview-word-group">
                         <div class="preview-word subject">Test Subject 1</div>
@@ -30,6 +35,7 @@
                 </div>
             </div>
 
+            <!-- Test Tile without Image -->
             <div class="dif-tile" 
                  data-supabase-id="456" 
                  data-record-type="collection" 
@@ -51,7 +57,7 @@
     </div>
 
     <!-- Core JavaScript -->
-    <script type="module" src="js/DifExpander.js"></script>
+    <script type="module" src="js/expander.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
