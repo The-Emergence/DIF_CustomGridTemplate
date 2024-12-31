@@ -5,7 +5,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 /* Header styling */
@@ -18,59 +17,12 @@ h1 {
 /* Grid layout */
 .dif-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increased from 250px */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
     padding: 20px 0;
 }
 
-/* Grid tile adjustments */
-.dif-tile {
-    display: flex;
-    min-height: 100%;
-    width: 100%;
-}
-
-.tile-frame {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Image container adjustments */
-.preview-image {
-    display: block;
-    width: 100%;
-    height: 180px;  /* Fixed height for consistency */
-    object-fit: cover;
-    margin: -20px -20px 15px -20px; /* Negative margin to extend to edges */
-    max-width: calc(100% + 40px); /* Compensate for negative margins */
-}
-
-/* Basic responsive adjustments */
-@media screen and (max-width: 1024px) {
-    .dif-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .dif-container {
-        padding: 10px;
-    }
-    
-    .dif-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .dif-grid {
-        grid-template-columns: 1fr; /* Stack tiles on mobile */
-    }
-}
-
-/* Ensure clean box sizing */
+/* Clean box sizing */
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -79,4 +31,16 @@ h1 {
 body, h1, h2, h3, p {
     margin: 0;
     padding: 0;
+}
+
+/* Basic responsive adjustments */
+@media screen and (max-width: 768px) {
+    .dif-container {
+        padding: 10px;
+    }
+    
+    .dif-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
