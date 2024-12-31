@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Inquiry Framework</title>
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/tile.css">
+    <link rel="stylesheet" href="css/expander.css">
+</head>
+<body>
+    <div class="dif-container">
+        <h1>Deep Inquiry Framework</h1>
+        
+        <!-- Main Grid Container -->
+        <div class="dif-grid">
+            <!-- Test Tiles -->
+            <div class="dif-tile" 
+                 data-supabase-id="123" 
+                 data-record-type="person" 
+                 data-collection-id="456">
+                <div class="tile-frame">
+                    <div class="record-badge">Person</div>
+                    <div class="preview-word-group">
+                        <div class="preview-word subject">Test Subject 1</div>
+                        <div class="preview-word class">Test Class 1</div>
+                        <div class="preview-word breadcrumb">Test Breadcrumb 1</div>
+                        <div class="preview-word colorword">Test Color 1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dif-tile" 
+                 data-supabase-id="456" 
+                 data-record-type="collection" 
+                 data-is-collection="true">
+                <div class="tile-frame">
+                    <div class="record-badge">Collection</div>
+                    <div class="preview-word-group">
+                        <div class="preview-word subject">Collection Name</div>
+                        <div class="preview-word class">Collection Type</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expander Container -->
+        <div class="dif-expander">
+            <!-- Content will be dynamically injected here -->
+        </div>
+    </div>
+
+    <!-- Core JavaScript -->
+    <script type="module" src="js/DifExpander.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
