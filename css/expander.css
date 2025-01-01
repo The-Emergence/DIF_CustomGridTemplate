@@ -1,4 +1,8 @@
 /* expander.css */
+/* Base font styling */
+.dif-expander {
+    font-family: Arial, sans-serif;
+}
 
 /* Base expander container */
 .dif-expander {
@@ -26,6 +30,7 @@
     display: flex;
     padding: 30px;
     gap: 30px;
+    font-family: Arial, sans-serif;
 }
 
 /* Left side - Image section */
@@ -47,17 +52,20 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-family: Arial, sans-serif;
 }
 
 /* Section styling */
 .expander-section {
     margin-bottom: 20px;
+    font-family: Arial, sans-serif;
 }
 
 .expander-section h3 {
     color: #333;
     font-size: 16px;
     margin-bottom: 10px;
+    font-family: Arial, sans-serif;
 }
 
 /* Record type badge in expander */
@@ -68,6 +76,7 @@
     border: 1px solid #333;
     border-radius: 3px;
     margin-bottom: 15px;
+    font-family: Arial, sans-serif;
 }
 
 /* Subject heading */
@@ -75,6 +84,7 @@
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
+    font-family: Arial, sans-serif;
 }
 
 /* Tags and words in expander */
@@ -82,6 +92,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    font-family: Arial, sans-serif;
 }
 
 .expander-tag {
@@ -89,11 +100,13 @@
     border: 1px solid #ddd;
     border-radius: 3px;
     font-size: 14px;
+    font-family: Arial, sans-serif;
 }
 
 /* Links section */
 .expander-links {
-    margin-top: auto;  /* Push to bottom */
+    margin-top: auto; /* Push to bottom */
+    font-family: Arial, sans-serif;
 }
 
 .expander-link {
@@ -104,6 +117,7 @@
     color: #333;
     text-decoration: none;
     transition: all 0.2s ease;
+    font-family: Arial, sans-serif;
 }
 
 .expander-link:hover {
@@ -136,7 +150,7 @@
         flex-direction: column;
         padding: 20px;
     }
-
+    
     .expander-left {
         max-width: 100%;
     }
