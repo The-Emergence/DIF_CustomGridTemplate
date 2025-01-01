@@ -4,18 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Inquiry Framework</title>
-    
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/tile.css">
     <link rel="stylesheet" href="css/expander.css">
-
-    <!-- React Dependencies -->
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    
-    <!-- Babel for JSX transformation -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     <div class="dif-container">
@@ -23,18 +14,35 @@
         
         <!-- Main Grid Container -->
         <div class="dif-grid">
-            <!-- Your original test tiles can stay for now -->
-            <div class="dif-tile" data-supabase-id="123" data-record-type="person">
-                <div class="tile-frame">
-                    <div class="record-badge">Person</div>
-                    <div class="preview-word-group">
-                        <div class="preview-word subject">Test Subject 1</div>
-                        <div class="preview-word class">Test Class 1</div>
-                        <div class="preview-word breadcrumb">Test Breadcrumb 1</div>
-                        <div class="preview-word colorword">Test Color 1</div>
-                    </div>
-                </div>
-            </div>
+          <!-- Test Tile without Image -->
+          <div class="dif-tile" 
+               data-supabase-id="123" 
+               data-record-type="person" 
+               data-collection-id="456">
+              <div class="tile-frame">
+                 <div class="record-badge">Person</div>
+                 <div class="preview-word-group">
+                     <div class="preview-word subject">Test Subject 1</div>
+                     <div class="preview-word class">Test Class 1</div>
+                     <div class="preview-word breadcrumb">Test Breadcrumb 1</div>
+                     <div class="preview-word colorword">Test Color 1</div>
+                 </div>
+              </div>
+          </div>
+
+          <!-- Test Collection Tile -->
+          <div class="dif-tile" 
+               data-supabase-id="456" 
+               data-record-type="collection" 
+               data-is-collection="true">
+              <div class="tile-frame">
+                  <div class="record-badge">Collection</div>
+                  <div class="preview-word-group">
+                      <div class="preview-word subject">Collection Name</div>
+                      <div class="preview-word class">Collection Type</div>
+                  </div>
+              </div>
+          </div>
         </div>
 
         <!-- Expander Container -->
@@ -44,9 +52,7 @@
     </div>
 
     <!-- Core JavaScript -->
-    <!-- Note the type="text/babel" for JSX files -->
-    <script type="text/babel" src="jsx/Tile.jsx"></script>
     <script type="module" src="js/expander.js"></script>
-    <script type="text/babel" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
