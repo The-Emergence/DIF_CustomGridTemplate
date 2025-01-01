@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="css/expander.css">
 
     <!-- React Dependencies -->
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Babel for JSX transformation -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
@@ -21,7 +23,18 @@
         
         <!-- Main Grid Container -->
         <div class="dif-grid">
-            <!-- React will render tiles here -->
+            <!-- Your original test tiles can stay for now -->
+            <div class="dif-tile" data-supabase-id="123" data-record-type="person">
+                <div class="tile-frame">
+                    <div class="record-badge">Person</div>
+                    <div class="preview-word-group">
+                        <div class="preview-word subject">Test Subject 1</div>
+                        <div class="preview-word class">Test Class 1</div>
+                        <div class="preview-word breadcrumb">Test Breadcrumb 1</div>
+                        <div class="preview-word colorword">Test Color 1</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Expander Container -->
@@ -31,38 +44,9 @@
     </div>
 
     <!-- Core JavaScript -->
+    <!-- Note the type="text/babel" for JSX files -->
+    <script type="text/babel" src="jsx/Tile.jsx"></script>
     <script type="module" src="js/expander.js"></script>
-    <script type="module" src="js/main.js"></script>
-
-    <!-- Development only - Remove in production -->
-    <script>
-        // Example data for testing
-        const testData = {
-            recordType: 'Product',
-            title: 'The War of 1812: A forgotten conflict',
-            bookType: 'Historical Non Fiction',
-            keyFigure: 'Sir George Prevost',
-            majorEvent: 'Burning of Washington',
-            themes: ['Political Intrigue', 'Military Strategy', 'Societal Impact'],
-            conflicts: ['Tension', 'Battles', 'Alliances']
-        };
-
-        // Test image tile data
-        const imageTestData = {
-            recordType: 'Person',
-            title: 'Battle of New Orleans',
-            category: 'Historical Event',
-            imageUrl: '/path/to/your/image.jpg'
-        };
-
-        // After DOM loads, create test tiles
-        document.addEventListener('DOMContentLoaded', () => {
-            const difGrid = window.difGrid;
-            if (difGrid) {
-                difGrid.addTile(testData);
-                difGrid.addTile(imageTestData);
-            }
-        });
-    </script>
+    <script type="text/babel" src="js/main.js"></script>
 </body>
 </html>
