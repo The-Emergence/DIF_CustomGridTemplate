@@ -1,9 +1,14 @@
 /* tile.css */
+/* Base font styling */
+.deep-inquiry-framework {
+    font-family: Arial, sans-serif;
+}
 
 /* Base tile styling */
 .dif-tile {
     cursor: pointer;
     transition: transform 0.2s ease;
+    font-family: Arial, sans-serif;
 }
 
 .dif-tile:hover {
@@ -17,6 +22,7 @@
     min-height: 220px;
     display: flex;
     flex-direction: column;
+    font-family: Arial, sans-serif;
 }
 
 /* Badge styling */
@@ -29,6 +35,7 @@
     border-radius: 3px;
     margin-bottom: 15px;
     align-self: flex-start;
+    font-family: Arial, sans-serif;
 }
 
 /* Word group container */
@@ -37,6 +44,7 @@
     flex-direction: column;
     gap: 15px;
     flex: 1;
+    font-family: Arial, sans-serif;
 }
 
 /* Individual word styling */
@@ -48,6 +56,7 @@
     position: relative;
     margin: 0 auto;
     width: calc(100% - 20px);
+    font-family: Arial, sans-serif;
 }
 
 /* Word bars */
