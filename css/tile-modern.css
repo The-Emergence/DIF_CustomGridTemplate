@@ -1,30 +1,46 @@
 /* css/tile-modern.css */
 
 /* Modern Tile Styling */
+/* css/tile-modern.css */
+
+/* Base font styling */
 .dif-tile-modern {
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.dif-tile-modern:hover {
-    transform: translateY(-2px);
+/* Make titles extra crisp */
+.modern-title {
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1F2937;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em; /* Slight negative tracking for that Apple look */
 }
 
-.modern-frame {
-    position: relative;
-    background: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 3.5rem 1.5rem 1.5rem;
-    min-height: 220px;
+/* Refine tag and label typography */
+.modern-section-label {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 0.875rem;
+    color: #6B7280;
+    font-weight: 400;
 }
 
-.modern-frame:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.modern-tag {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    background: #F9FAFB;
+    border-radius: 9999px;
+    color: #374151;
+    font-weight: 400;
 }
 
-/* Modern Record Type Badge */
+/* Refine record type badge */
 .record-type-modern {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -36,6 +52,7 @@
     border-radius: 9999px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     color: #374151;
+    letter-spacing: -0.01em;
 }
 
 /* Record type variations */
