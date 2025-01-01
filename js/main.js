@@ -1,6 +1,8 @@
 // main.js
-
 import { DifExpander } from './expander.js';
+import Tile from '../jsx/Tile.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 class DifGrid {
     constructor() {
@@ -42,45 +44,69 @@ class DifGrid {
         // Adjust grid layout if needed
     }
 
-    // Method to add new tiles dynamically (will be useful for Supabase integration)
+    // Updated method to add new tiles using React
     addTile(tileData) {
-        const tile = this.createTileElement(tileData);
-        this.gridContainer.appendChild(tile);
+        // Create a container for the React tile
+        const tileContainer = document.createElement('div');
+        tileContainer.className = 'dif-tile-container';
+        this.gridContainer.appendChild(tileContainer);
+
+        // Transform the data to match the React component's expected format
+        const transformedData = this.transformTileData(tileData);
+
+        // Render the React tile component
+        ReactDOM.render(
+            <Tile data={transformedData} />,
+            tileContainer
+        );
     }
 
+    // Helper method to transform data from Supabase format to React component format
+    transformTileData(data) {
+        if (data.image) {
+            // Image tile format
+            return {
+                recordType: data.type,
+                title: data.subject,
+                category: data.class,
+                imageUrl: data.image
+            };
+        } else {
+            // Text tile format
+            return {
+                recordType: data.type,
+                title: data.subject,
+                bookType: data.class,
+                keyFigure: data.colorWord,
+                majorEvent: data.breadcrumb,
+                themes: [], // Add if available in your data
+                conflicts: [] // Add if available in your data
+            };
+        }
+    }
+
+    // Method to handle data from Supabase
+    async handleSupabaseData(supabaseData) {
+        supabaseData.forEach(record => {
+            this.addTile(record);
+        });
+    }
+
+    // Legacy method kept for backwards compatibility
     createTileElement(data) {
-        const tile = document.createElement('div');
-        tile.className = 'dif-tile';
-        tile.dataset.supabaseId = data.id;
-        tile.dataset.recordType = data.type;
+        // Create container for React component
+        const tileContainer = document.createElement('div');
+        tileContainer.className = 'dif-tile-container';
         
-        if (data.collectionId) {
-            tile.dataset.collectionId = data.collectionId;
-        }
-    
-        if (data.imageId) {
-            tile.dataset.imageId = data.imageId;
-        }
-    
-        tile.innerHTML = `
-            <div class="tile-frame">
-                <div class="record-badge">${data.type}</div>
-                ${data.image ? `
-                    <img class="preview-image" src="${data.image}" alt="${data.subject}">
-                ` : ''}
-                <div class="preview-word-group">
-                    <div class="preview-word subject">${data.subject}</div>
-                    <div class="preview-word class">${data.class}</div>
-                    <div class="preview-word breadcrumb">${data.breadcrumb}</div>
-                    <div class="preview-word colorword">${data.colorWord}</div>
-                </div>
-            </div>
-        `;
-    
-        return tile;
+        // Transform and render React component
+        const transformedData = this.transformTileData(data);
+        ReactDOM.render(
+            <Tile data={transformedData} />,
+            tileContainer
+        );
+
+        return tileContainer;
     }
-
-
 }
 
 // Initialize the grid system
