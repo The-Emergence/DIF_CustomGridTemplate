@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Inquiry Framework</title>
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/tile.css">
     <link rel="stylesheet" href="css/expander.css">
+
+    <!-- React Dependencies -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     <div class="dif-container">
@@ -14,36 +21,7 @@
         
         <!-- Main Grid Container -->
         <div class="dif-grid">
-          
-          <!-- Test Tile without Image (for debugging) -->
-<div class="dif-tile" 
-data-supabase-id="123" 
-data-record-type="person" 
-data-collection-id="456">
-<div class="tile-frame">
-   <div class="record-badge">Person</div>
-   <div class="preview-word-group">
-       <div class="preview-word subject">Test Subject 1</div>
-       <div class="preview-word class">Test Class 1</div>
-       <div class="preview-word breadcrumb">Test Breadcrumb 1</div>
-       <div class="preview-word colorword">Test Color 1</div>
-   </div>
-</div>
-</div>
-
-            <!-- Test Tile without Image -->
-            <div class="dif-tile" 
-                 data-supabase-id="456" 
-                 data-record-type="collection" 
-                 data-is-collection="true">
-                <div class="tile-frame">
-                    <div class="record-badge">Collection</div>
-                    <div class="preview-word-group">
-                        <div class="preview-word subject">Collection Name</div>
-                        <div class="preview-word class">Collection Type</div>
-                    </div>
-                </div>
-            </div>
+            <!-- React will render tiles here -->
         </div>
 
         <!-- Expander Container -->
@@ -55,5 +33,36 @@ data-collection-id="456">
     <!-- Core JavaScript -->
     <script type="module" src="js/expander.js"></script>
     <script type="module" src="js/main.js"></script>
+
+    <!-- Development only - Remove in production -->
+    <script>
+        // Example data for testing
+        const testData = {
+            recordType: 'Product',
+            title: 'The War of 1812: A forgotten conflict',
+            bookType: 'Historical Non Fiction',
+            keyFigure: 'Sir George Prevost',
+            majorEvent: 'Burning of Washington',
+            themes: ['Political Intrigue', 'Military Strategy', 'Societal Impact'],
+            conflicts: ['Tension', 'Battles', 'Alliances']
+        };
+
+        // Test image tile data
+        const imageTestData = {
+            recordType: 'Person',
+            title: 'Battle of New Orleans',
+            category: 'Historical Event',
+            imageUrl: '/path/to/your/image.jpg'
+        };
+
+        // After DOM loads, create test tiles
+        document.addEventListener('DOMContentLoaded', () => {
+            const difGrid = window.difGrid;
+            if (difGrid) {
+                difGrid.addTile(testData);
+                difGrid.addTile(imageTestData);
+            }
+        });
+    </script>
 </body>
 </html>
