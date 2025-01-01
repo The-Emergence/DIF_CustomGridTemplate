@@ -1,8 +1,5 @@
 /* css/tile-modern.css */
 
-/* Modern Tile Styling */
-/* css/tile-modern.css */
-
 /* Base font styling */
 .dif-tile-modern {
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -10,40 +7,31 @@
     transition: all 0.3s ease;
 }
 
-/* Make titles extra crisp */
-.modern-title {
-    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #1F2937;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em; /* Slight negative tracking for that Apple look */
+.dif-tile-modern:hover {
+    transform: translateY(-2px);
 }
 
-/* Refine tag and label typography */
-.modern-section-label {
-    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: 0.875rem;
-    color: #6B7280;
-    font-weight: 400;
+/* Frame styling */
+.modern-frame {
+    position: relative;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 3.5rem 1.5rem 1.5rem;
+    min-height: 220px;
+    overflow: visible;
 }
 
-.modern-tag {
-    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-    background: #F9FAFB;
-    border-radius: 9999px;
-    color: #374151;
-    font-weight: 400;
+.modern-frame:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Refine record type badge */
+/* Record type badge */
 .record-type-modern {
-    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     position: absolute;
     top: 1rem;
     left: 1rem;
+    z-index: 1;
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
@@ -53,6 +41,7 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     color: #374151;
     letter-spacing: -0.01em;
+    transform: translateZ(0);
 }
 
 /* Record type variations */
@@ -68,16 +57,20 @@
 }
 
 .modern-section-label {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: 0.875rem;
     color: #6B7280;
+    font-weight: 400;
 }
 
-/* Modern title */
+/* Title styling */
 .modern-title {
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: 1.25rem;
     font-weight: 500;
     color: #1F2937;
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
 }
 
 /* Tag styling */
@@ -88,10 +81,22 @@
 }
 
 .modern-tag {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: inline-block;
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
     background: #F9FAFB;
     border-radius: 9999px;
     color: #374151;
+    font-weight: 400;
+}
+
+/* Ensure stable positioning during hover */
+.dif-tile-modern:hover .record-type-modern {
+    transform: translateZ(0);
+}
+
+/* Hidden elements for expander compatibility */
+.preview-word-group {
+    display: none;
 }
