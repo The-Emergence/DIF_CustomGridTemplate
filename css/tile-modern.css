@@ -42,6 +42,7 @@
     color: #374151;
     letter-spacing: -0.01em;
     transform: translateZ(0);
+    z-index: 2;  /* Increased z-index */
 }
 
 /* Record type variations */
@@ -119,10 +120,11 @@
     position: absolute;
     inset: 0;
     padding: 1.5rem;
+    padding-top: 5rem;  /* Increased top padding */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Changed from justify-content: flex-end */
-    height: calc(100% - 4rem); /* Adjust height to account for header */
+    justify-content: space-between;
+    z-index: 1;
 }
 
 .image-tag {
