@@ -121,7 +121,8 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between; /* Changed from justify-content: flex-end */
+    height: 100%;
 }
 
 .image-tag {
