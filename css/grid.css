@@ -1,4 +1,9 @@
 /* grid.css */
+/* Header section */
+.dif-header {
+    padding: 12px 0;  /* Adjust this value as needed */
+    margin-bottom: 12px;  /* Space between header and grid */
+}
 
 /* Main container */
 .dif-container {

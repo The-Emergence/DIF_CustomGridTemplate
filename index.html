@@ -7,60 +7,16 @@
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/tile.css">
     <link rel="stylesheet" href="css/expander.css">
-    <link rel="stylesheet" href="css/tile-modern.css"> 
+    <link rel="stylesheet" href="css/tile-modern.css">
 </head>
 <body>
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/tile.css">
-    <link rel="stylesheet" href="css/expander.css">
-    <link rel="stylesheet" href="css/tile-modern.css">  <!-- Add this line -->
-
     <div class="dif-container">
-        <h1 class="dif-modern-title">War of 1812</h1>
-        <!-- rest of your content -->
-    </div>
+        <header class="dif-header">
+            <h1 class="dif-modern-title">War of 1812</h1>
+        </header>
         
         <!-- Main Grid Container -->
         <div class="dif-grid">
-
-<!-- Add this alongside your existing tiles -->
-<div class="dif-tile dif-tile-modern" 
-     data-supabase-id="789" 
-     data-record-type="product">
-    <div class="modern-frame">
-        <div class="record-type-modern product">Book</div>
-        
-        <!-- Add this div to match the structure the expander is looking for -->
-        <div class="preview-word-group" style="display: none;">
-            <div class="preview-word subject">The War of 1812: A forgotten conflict</div>
-            <div class="preview-word class">Historical Non Fiction</div>
-            <div class="preview-word breadcrumb">Military History</div>
-            <div class="preview-word colorword">Sir George Prevost</div>
-        </div>
-        
-        <h3 class="modern-title">The War of 1812: A forgotten conflict</h3>
-        
-        <div class="modern-section">
-            <span class="modern-section-label">Book Type:</span>
-            <div class="modern-tag">Historical Non Fiction</div>
-        </div>
-        
-        <div class="modern-section">
-            <span class="modern-section-label">Key Figure:</span>
-            <span class="modern-tag">Sir George Prevost</span>
-        </div>
-        
-        <div class="modern-section">
-            <span class="modern-section-label">Themes:</span>
-            <div class="modern-tag-container">
-                <span class="modern-tag">Political Intrigue</span>
-                <span class="modern-tag">Military Strategy</span>
-                <span class="modern-tag">Societal Impact</span>
-            </div>
-        </div>
-    </div>
-</div>
-
           <!-- Test Tile without Image -->
           <div class="dif-tile" 
                data-supabase-id="123" 
@@ -87,6 +43,42 @@
                   <div class="preview-word-group">
                       <div class="preview-word subject">Collection Name</div>
                       <div class="preview-word class">Collection Type</div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Modern Style Tile -->
+          <div class="dif-tile dif-tile-modern">
+              <div class="modern-frame">
+                  <div class="record-type-modern product">Product</div>
+                  
+                  <!-- Hidden elements for expander compatibility -->
+                  <div class="preview-word-group" style="display: none;">
+                      <div class="preview-word subject">The War of 1812: A forgotten conflict</div>
+                      <div class="preview-word class">Historical Non Fiction</div>
+                      <div class="preview-word breadcrumb">Military History</div>
+                      <div class="preview-word colorword">Sir George Prevost</div>
+                  </div>
+                  
+                  <h3 class="modern-title">The War of 1812: A forgotten conflict</h3>
+                  
+                  <div class="modern-section">
+                      <span class="modern-section-label">Book Type:</span>
+                      <div class="modern-tag">Historical Non Fiction</div>
+                  </div>
+                  
+                  <div class="modern-section">
+                      <span class="modern-section-label">Key Figure:</span>
+                      <span class="modern-tag">Sir George Prevost</span>
+                  </div>
+                  
+                  <div class="modern-section">
+                      <span class="modern-section-label">Themes:</span>
+                      <div class="modern-tag-container">
+                          <span class="modern-tag">Political Intrigue</span>
+                          <span class="modern-tag">Military Strategy</span>
+                          <span class="modern-tag">Societal Impact</span>
+                      </div>
                   </div>
               </div>
           </div>
