@@ -165,3 +165,11 @@
 .preview-word-group {
     display: none;
 }
+
+.modern-frame .preview-word-group {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    height: 0;
+}
