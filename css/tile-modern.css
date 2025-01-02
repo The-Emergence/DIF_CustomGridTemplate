@@ -1,16 +1,5 @@
 /* css/tile-modern.css */
 
-
-/* At the top of tile-modern.css */
-.dif-modern-title {
-    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #1F2937;
-    letter-spacing: -0.02em;
-    text-align: center;
-    margin-bottom: 2rem;
-}
 /* Base font styling */
 .dif-tile-modern {
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -100,6 +89,71 @@
     border-radius: 9999px;
     color: #374151;
     font-weight: 400;
+}
+
+/* Image tile specific styles */
+.modern-frame.has-image {
+    padding: 0;
+    height: 300px;
+    overflow: hidden;
+}
+
+.modern-frame.has-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.modern-frame.has-image:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+}
+
+.image-content {
+    position: absolute;
+    inset: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.image-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    color: white;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
+}
+
+.image-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+.image-subtitle {
+    color: white;
+    font-size: 1rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
 }
 
 /* Ensure stable positioning during hover */
