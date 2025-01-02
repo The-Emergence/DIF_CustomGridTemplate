@@ -4,7 +4,7 @@
 .dif-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 40px;  /* 20px top/bottom, 40px left/right */
+    padding: 20px;
 }
 
 /* Header styling */
@@ -18,8 +18,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    margin: 0 auto;  /* Center the grid */
-    width: 100%;     /* Ensure full width within container */
+    margin-left: 40px;  /* Add specific left margin */
+    margin-right: 40px; /* Balance it out on the right */
 }
 
 /* Clean box sizing */
