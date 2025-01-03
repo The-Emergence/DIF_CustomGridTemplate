@@ -71,78 +71,78 @@ export class DifExpander {
     }
 
     buildContentHtml(content) {
-        const rdfTags = [
-            { text: content.class, type: 'class' },
-            ...(content.breadcrumbs || []).map(text => ({ text, type: 'tag' })),
-            ...(content.colorWords || []).map(text => ({ text, type: 'keyword' }))
-        ];
-
         return `
-            <div class="expander-content p-4">
-                <div class="flex justify-between items-center mb-4 bg-blue-600 p-2 rounded">
-                    <div class="inline-block px-2 py-0.5 text-xs border rounded bg-white/90 text-blue-600 border-blue-500">
-                        ${content.type}
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="w-6 h-6 flex items-center justify-center text-white">
-                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
-                            </svg>
-                        </button>
-                        <button class="w-6 h-6 flex items-center justify-center text-white">
-                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
-                                <path d="M16 6l-4-4-4 4"/>
-                                <path d="M12 2v13"/>
-                            </svg>
-                        </button>
-                        <button class="expander-close w-6 h-6 flex items-center justify-center text-white">×</button>
-                    </div>
-                </div>
-
-                <div class="relative mb-6">
-                    <div class="float-left w-64 mr-4 mb-2">
-                        <img 
-                            src="${content.image}" 
-                            alt="${content.subject}"
-                            class="w-full h-48 object-cover border border-gray-200 rounded-lg shadow-sm"
-                        >
-                    </div>
-
-                    <div class="min-w-0">
-                        <h2 class="text-lg font-medium text-gray-800 mb-3">${content.subject}</h2>
-                        <p class="text-sm text-gray-600 mb-3">${content.description}</p>
-                        <div class="flex flex-wrap gap-2">
-                            ${content.links.map(link => `
-                                <a href="${link.url}" 
-                                   class="px-2 py-1 text-xs border transition-colors duration-200 no-underline 
-                                   ${link.type === 'purchase' 
-                                       ? 'border-green-600 text-green-600 hover:bg-green-600 hover:text-white'
-                                       : 'border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white'}">
-                                    ${link.text}
-                                </a>
-                            `).join('')}
+            <div class="expander-content">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-4 bg-blue-600 p-2 rounded w-full">
+                        <div class="inline-block px-2 py-0.5 text-xs border rounded bg-white/90 text-blue-600 border-blue-500">
+                            ${content.type}
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="w-6 h-6 flex items-center justify-center text-white">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
+                                </svg>
+                            </button>
+                            <button class="w-6 h-6 flex items-center justify-center text-white">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
+                                    <path d="M16 6l-4-4-4 4"/>
+                                    <path d="M12 2v13"/>
+                                </svg>
+                            </button>
+                            <button class="expander-close w-6 h-6 flex items-center justify-center text-white">×</button>
                         </div>
                     </div>
-                </div>
 
-                <div class="bg-blue-600 p-2 rounded mt-4">
-                    <div class="flex flex-wrap gap-2 justify-center">
-                        ${rdfTags.map(tag => `
-                            <div class="flex items-center gap-1 bg-white/90 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                                <button class="p-1.5 hover:bg-gray-50 rounded-l-lg border-r border-gray-100" title="Add to Attractor">
-                                    <svg class="w-3 h-3 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 5v14M5 12h14"/>
-                                    </svg>
-                                </button>
-                                <button class="px-3 py-1.5 text-xs rounded-r-lg hover:bg-gray-50 
-                                    ${tag.type === 'class' ? 'text-indigo-700' : 
-                                      tag.type === 'tag' ? 'text-emerald-700' : 
-                                      'text-amber-700'}">
-                                    ${tag.text}
-                                </button>
+                    <div class="relative mb-6">
+                        <div class="float-left w-64 mr-4 mb-2">
+                            <img 
+                                src="${content.image}" 
+                                alt="${content.subject}"
+                                class="w-full h-48 object-cover border border-gray-200 rounded-lg shadow-sm"
+                            >
+                        </div>
+
+                        <div class="min-w-0">
+                            <h2 class="text-lg font-medium text-gray-800 mb-3">${content.subject}</h2>
+                            <p class="text-sm text-gray-600 mb-3">${content.description}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${content.links.map(link => `
+                                    <a href="${link.url}" 
+                                       class="px-2 py-1 text-xs border transition-colors duration-200 no-underline 
+                                       ${link.type === 'purchase' 
+                                           ? 'border-green-600 text-green-600 hover:bg-green-600 hover:text-white'
+                                           : 'border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white'}">
+                                        ${link.text}
+                                    </a>
+                                `).join('')}
                             </div>
-                        `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-600 p-2 rounded mt-4 w-full">
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            ${[
+                                { text: content.class, type: 'class' },
+                                ...(content.breadcrumbs || []).map(text => ({ text, type: 'tag' })),
+                                ...(content.colorWords || []).map(text => ({ text, type: 'keyword' }))
+                            ].map(tag => `
+                                <div class="flex items-center gap-1 bg-white/90 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                                    <button class="p-1.5 hover:bg-gray-50 rounded-l-lg border-r border-gray-100" title="Add to Attractor">
+                                        <svg class="w-3 h-3 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 5v14M5 12h14"/>
+                                        </svg>
+                                    </button>
+                                    <button class="px-3 py-1.5 text-xs rounded-r-lg hover:bg-gray-50 
+                                        ${tag.type === 'class' ? 'text-indigo-700' : 
+                                          tag.type === 'tag' ? 'text-emerald-700' : 
+                                          'text-amber-700'}">
+                                        ${tag.text}
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 </div>
             </div>
