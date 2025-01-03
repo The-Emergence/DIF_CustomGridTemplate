@@ -42,7 +42,7 @@ export class DifExpander {
             type: tile.dataset.recordType,
             subject: getPreviewWord('subject'),
             class: getPreviewWord('class'),
-            description: "This comprehensive and authoritative history of the War of 1812, thoroughly revised for the 200th anniversary of the historic conflict, is a myth-shattering study that will inform and entertain students, historians, and general readers alike...",
+            description: "This comprehensive and authoritative history of the War of 1812, thoroughly revised for the 200th anniversary of the historic conflict, is a myth-shattering study that will inform and entertain students, historians, and general readers alike. Donald R. Hickey explores the military, diplomatic, and domestic history of our second war with Great Britain, bringing the study up to date with recent scholarship on all aspects of the war, from the Gulf of Mexico to Canada. The newly expanded The War of 1812: A Forgotten Conflict, Bicentennial Edition includes additional information on the British forces, American Indians, and military operations such as the importance of logistics and the use and capabilities of weaponry. Hickey explains how the war promoted American nationalism and manifest destiny, stimulated peacetime defense spending, and enhanced America's reputation abroad. ",
             breadcrumbs: [getPreviewWord('breadcrumb')],
             colorWords: [getPreviewWord('colorword')],
             links: [
