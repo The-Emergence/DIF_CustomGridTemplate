@@ -8,63 +8,89 @@
     <link rel="stylesheet" href="css/tile.css">
     <link rel="stylesheet" href="css/expander.css">
     <link rel="stylesheet" href="css/tile-modern.css">
-    
-    <!-- Add React dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 </head>
 <body>
-    <!-- Your existing HTML structure stays the same until the expander section -->
     <div class="dif-container">
-        <!-- ... (previous content) ... -->
+        <header class="dif-header">
+            <h1 class="dif-modern-title">War of 1812</h1>
+        </header>
+        
+        <!-- Main Grid Container -->
+        <div class="dif-grid">
+          <!-- Modern Text Tile -->
+          <div class="dif-tile dif-tile-modern"
+               data-supabase-id="789" 
+               data-record-type="Product">
+              <div class="modern-frame">
+                  <div class="record-type-modern product"></div>
+                  
+                  <!-- Expander compatibility structure -->
+                  <div class="preview-word-group">
+                      <div class="preview-word subject">The War of 1812: A forgotten conflict</div>
+                      <div class="preview-word class">Historical Non Fiction</div>
+                      <div class="preview-word breadcrumb">Military History</div>
+                      <div class="preview-word colorword">Sir George Prevost</div>
+                  </div>
+                  
+                  <h3 class="modern-title">The War of 1812: A forgotten conflict</h3>
+                  
+                  <div class="modern-section">
+                      <span class="modern-section-label">Book Type:</span>
+                      <div class="modern-tag">Historical Non Fiction</div>
+                  </div>
+                  
+                  <div class="modern-section">
+                      <span class="modern-section-label">Key Figure:</span>
+                      <span class="modern-tag">Sir George Prevost</span>
+                  </div>
+                  
+                  <div class="modern-section">
+                      <span class="modern-section-label">Themes:</span>
+                      <div class="modern-tag-container">
+                          <span class="modern-tag">Political Intrigue</span>
+                          <span class="modern-tag">Military Strategy</span>
+                          <span class="modern-tag">Societal Impact</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-        <!-- Replace expander div with -->
-        <div id="expander-root"></div>
+          <!-- Modern Image Tile -->
+          <div class="dif-tile dif-tile-modern"
+               data-supabase-id="101" 
+               data-record-type="Insight">
+              <div class="modern-frame has-image">
+                  <div class="record-type-modern person">Podcast Episode</div>
+                  
+                  <!-- Expander compatibility structure -->
+                  <div class="preview-word-group">
+                      <div class="preview-word subject">Industrial Revolution</div>
+                      <div class="preview-word class">Historical Era</div>
+                      <div class="preview-word breadcrumb">Manufacturing</div>
+                      <div class="preview-word colorword">1760-1840</div>
+                  </div>
+                  
+                  <img src="https://cropper.watch.aetnd.com/public-content-aetn.video.aetnd.com/video-thumbnails/AETN-History_VMS/21/133/History_Andrew_Jackson_Defends_New_Orleans_1812_rev_SF_HD_1104x622-16x9.jpg
+                  " alt="Industrial Revolution">
+                  <div class="image-overlay"></div>
+                  <div class="image-content">
+                      <span class="image-tag">Historical Era</span>
+                      <h3 class="image-title">Industrial Revolution</h3>
+                      <p class="image-subtitle">The transformation of manufacturing processes</p>
+                      <span class="image-tag">1760-1840</span>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Expander Container -->
+        <div class="dif-expander">
+            <!-- Content will be dynamically injected here -->
+        </div>
     </div>
 
-    <!-- Initialize React expander -->
-    <script type="module">
-        const container = document.getElementById('expander-root');
-        const root = ReactDOM.createRoot(container);
-
-        // Click handler for tiles
-        document.querySelector('.dif-grid').addEventListener('click', (e) => {
-            const tile = e.target.closest('.dif-tile');
-            if (!tile) return;
-
-            console.log('Tile clicked'); // Debug logging
-
-            // Get preview word data
-            const getPreviewWord = (className) => 
-                tile.querySelector(`.preview-word.${className}`)?.textContent || '';
-
-            const content = {
-                type: tile.dataset.recordType || 'Book',
-                subject: getPreviewWord('subject'),
-                class: getPreviewWord('class'),
-                description: "This comprehensive and authoritative history of the War of 1812...",
-                breadcrumbs: [getPreviewWord('breadcrumb')],
-                colorWords: [getPreviewWord('colorword')],
-                links: [
-                    { text: "Related Documents", url: "#", type: "reference" },
-                    { text: "Purchase Book", url: "#", type: "purchase" }
-                ],
-                image: tile.querySelector('img')?.src || "/api/placeholder/400/320"
-            };
-
-            console.log('Content prepared:', content); // Debug logging
-            
-            import('./ExpanderComponent.jsx').then(module => {
-                const Expander = module.default;
-                root.render(
-                    React.createElement(Expander, {
-                        isOpen: true,
-                        content: content,
-                        onClose: () => root.render(null)
-                    })
-                );
-            }).catch(err => console.error('Error loading Expander:', err));
-        });
-    </script>
+    <!-- Core JavaScript -->
+    <script type="module" src="js/expander.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
