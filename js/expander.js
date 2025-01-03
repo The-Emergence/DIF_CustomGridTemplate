@@ -42,7 +42,7 @@ export class DifExpander {
             type: tile.dataset.recordType,
             subject: getPreviewWord('subject'),
             class: getPreviewWord('class'),
-            description: "This comprehensive and authoritative history of the War of 1812, thoroughly revised for the 200th anniversary of the historic conflict, is a myth-shattering study that will inform and entertain students, historians, and general readers alike. Donald R. Hickey explores the military, diplomatic, and domestic history of our second war with Great Britain, bringing the study up to date with recent scholarship on all aspects of the war, from the Gulf of Mexico to Canada. The newly expanded The War of 1812: A Forgotten Conflict, Bicentennial Edition includes additional information on the British forces, American Indians, and military operations such as the importance of logistics and the use and capabilities of weaponry. Hickey explains how the war promoted American nationalism and manifest destiny, stimulated peacetime defense spending, and enhanced America's reputation abroad. ",
+            description: "This comprehensive and authoritative history of the War of 1812, thoroughly revised for the 200th anniversary of the historic conflict, is a myth-shattering study that will inform and entertain students, historians, and general readers alike. Donald R. Hickey explores the military, diplomatic, and domestic history of our second war with Great Britain, bringing the study up to date with recent scholarship on all aspects of the war, from the Gulf of Mexico to Canada. The newly expanded The War of 1812: A Forgotten Conflict, Bicentennial Edition includes additional information on the British forces, American Indians, and military operations such as the importance of logistics and the use and capabilities of weaponry.",
             breadcrumbs: [getPreviewWord('breadcrumb')],
             colorWords: [getPreviewWord('colorword')],
             links: [
@@ -55,18 +55,12 @@ export class DifExpander {
 
     showContent(content) {
         const contentHtml = this.buildContentHtml(content);
-        
-        // Clear and update container
         this.container.innerHTML = contentHtml;
-        
-        // Force reflow before adding active class
         this.container.offsetHeight;
-        
         requestAnimationFrame(() => {
             this.container.classList.add('active');
             this.isExpanded = true;
         });
-        
         this.container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
@@ -91,7 +85,7 @@ export class DifExpander {
                                     <path d="M12 2v13"/>
                                 </svg>
                             </button>
-                            <button class="expander-close w-6 h-6 flex items-center justify-center text-white">×</button>
+                            <button class="expander-close w-6 h-6 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200 text-white">×</button>
                         </div>
                     </div>
 
@@ -128,7 +122,7 @@ export class DifExpander {
                                 ...(content.breadcrumbs || []).map(text => ({ text, type: 'tag' })),
                                 ...(content.colorWords || []).map(text => ({ text, type: 'keyword' }))
                             ].map(tag => `
-                                <div class="flex items-center gap-1 bg-white/90 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                                <div class="flex items-center gap-1 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                                     <button class="p-1.5 hover:bg-gray-50 rounded-l-lg border-r border-gray-100" title="Add to Attractor">
                                         <svg class="w-3 h-3 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M12 5v14M5 12h14"/>
