@@ -66,13 +66,13 @@ export class DifExpander {
 
     buildContentHtml(content) {
         return `
-            <div class="expander-content">
+            <div class="expander-content w-full">
                 <div class="p-4">
                     <div class="flex justify-between items-center mb-4 bg-blue-600 p-2 rounded w-full">
                         <div class="inline-block px-2 py-0.5 text-xs border rounded bg-white/90 text-blue-600 border-blue-500">
                             ${content.type}
                         </div>
-                        <div class="flex gap-2">
+                        <div class="flex gap-2 items-center">
                             <button class="w-6 h-6 flex items-center justify-center text-white">
                                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
@@ -85,11 +85,11 @@ export class DifExpander {
                                     <path d="M12 2v13"/>
                                 </svg>
                             </button>
-                            <button class="expander-close w-6 h-6 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200 text-white">×</button>
+                            <button class="expander-close w-6 h-6 flex items-center justify-center text-white font-medium">×</button>
                         </div>
                     </div>
 
-                    <div class="relative mb-6">
+                    <div class="w-full">
                         <div class="float-left w-64 mr-4 mb-2">
                             <img 
                                 src="${content.image}" 
