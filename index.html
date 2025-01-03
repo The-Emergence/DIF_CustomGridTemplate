@@ -22,7 +22,7 @@
                data-supabase-id="789" 
                data-record-type="Product">
               <div class="modern-frame">
-                  <div class="record-type-modern product">Book</div>
+                  <div class="record-type-modern product"></div>
                   
                   <!-- Expander compatibility structure -->
                   <div class="preview-word-group">
@@ -70,8 +70,8 @@
                       <div class="preview-word colorword">1760-1840</div>
                   </div>
                   
-                  <img src="https://cropper.watch.aetnd.com/public-content-aetn.video.aetnd.com/video-thumbnails/AETN-History_VMS/21/133/History_Andrew_Jackson_Defends_New_Orleans_1812_rev_SF_HD_1104x622-16x9.jpg
-                  " alt="Industrial Revolution">
+                  <img src="https://cropper.watch.aetnd.com/public-content-aetn.video.aetnd.com/video-thumbnails/AETN-History_VMS/21/133/History_Andrew_Jackson_Defends_New_Orleans_1812_rev_SF_HD_1104x622-16x9.jpg" 
+                       alt="Industrial Revolution">
                   <div class="image-overlay"></div>
                   <div class="image-content">
                       <span class="image-tag">Historical Era</span>
@@ -83,14 +83,45 @@
           </div>
         </div>
 
-        <!-- Expander Container -->
-        <div class="dif-expander">
-            <!-- Content will be dynamically injected here -->
-        </div>
+        <!-- React Mount Point -->
+        <div id="expander-root"></div>
     </div>
 
-    <!-- Core JavaScript -->
-    <script type="module" src="js/expander.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <!-- React and Core Dependencies -->
+    <script type="module">
+        import { createRoot } from 'react-dom/client';
+        import { ExpanderComponent } from './ExpanderComponent.jsx';
+        
+        const container = document.getElementById('expander-root');
+        const root = createRoot(container);
+        
+        // Listen for tile clicks
+        document.querySelector('.dif-grid').addEventListener('click', (e) => {
+            const tile = e.target.closest('.dif-tile');
+            if (tile) {
+                const content = {
+                    type: tile.dataset.recordType,
+                    subject: tile.querySelector('.preview-word.subject').textContent,
+                    class: tile.querySelector('.preview-word.class').textContent,
+                    description: "This comprehensive and authoritative history of the War of 1812...",
+                    breadcrumbs: [tile.querySelector('.preview-word.breadcrumb').textContent],
+                    colorWords: [tile.querySelector('.preview-word.colorword').textContent],
+                    links: [
+                        { text: "Related Documents", url: "#", type: "reference" },
+                        { text: "Purchase Book", url: "#", type: "purchase" }
+                    ],
+                    image: tile.querySelector('img')?.src || "/api/placeholder/400/320"
+                };
+                
+                root.render(
+                    <ExpanderComponent 
+                        isOpen={true}
+                        content={content}
+                        onClose={() => root.render(null)}
+                    />
+                );
+            }
+        });
+    </script>
 </body>
 </html>
