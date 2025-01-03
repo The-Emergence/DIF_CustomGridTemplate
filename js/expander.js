@@ -67,28 +67,28 @@ export class DifExpander {
     buildContentHtml(content) {
         return `
             <div class="expander-content w-full">
-                <div class="bg-blue-600 p-2 rounded w-full flex justify-between items-center">
-                    <div class="inline-block px-2 py-0.5 text-xs border rounded bg-white/90 text-blue-600 border-blue-500">
-                        ${content.type}
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button class="w-6 h-6 flex items-center justify-center text-white">
-                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
-                            </svg>
-                        </button>
-                        <button class="w-6 h-6 flex items-center justify-center text-white">
-                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
-                                <path d="M16 6l-4-4-4 4"/>
-                                <path d="M12 2v13"/>
-                            </svg>
-                        </button>
-                        <span class="expander-close text-white text-lg font-medium cursor-pointer">×</span>
-                    </div>
-                </div>
-
                 <div class="p-4">
+                    <div class="flex justify-between items-center gap-2 mb-4">
+                        <div class="px-2 py-0.5 text-xs border rounded border-blue-500 text-gray-700">
+                            Product
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button class="w-6 h-6 flex items-center justify-center bg-gray-800/10 rounded-full">
+                                <svg class="w-3.5 h-3.5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
+                                </svg>
+                            </button>
+                            <button class="w-6 h-6 flex items-center justify-center bg-gray-800/10 rounded-full">
+                                <svg class="w-3.5 h-3.5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
+                                    <path d="M16 6l-4-4-4 4"/>
+                                    <path d="M12 2v13"/>
+                                </svg>
+                            </button>
+                            <span class="expander-close w-6 h-6 flex items-center justify-center bg-gray-800/10 rounded-full text-gray-700 cursor-pointer text-lg">×</span>
+                        </div>
+                    </div>
+
                     <div class="float-left w-64 mr-4 mb-2">
                         <img 
                             src="${content.image}" 
