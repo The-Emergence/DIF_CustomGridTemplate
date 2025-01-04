@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>React JSX Test</title>
+    <title>React JSX Import Test</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
@@ -14,30 +14,14 @@
     <!-- Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- React Component -->
+    <!-- Import external component -->
+    <script type="text/babel" src="js/ExpanderComponent.jsx"></script>
+    
+    <!-- Initialization script -->
     <script type="text/babel">
-        // Simple component using JSX
-        const TestComponent = () => {
-            const [count, setCount] = React.useState(0);
-            
-            return (
-                <div className="p-8 bg-blue-500 text-white">
-                    <h2 className="text-xl mb-4">React + JSX is working!</h2>
-                    <p className="mb-4">Count: {count}</p>
-                    <button 
-                        onClick={() => setCount(count + 1)}
-                        className="px-4 py-2 bg-white text-blue-500 rounded"
-                    >
-                        Click me
-                    </button>
-                </div>
-            );
-        };
-
-        // Initialize
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<TestComponent />);
+        root.render(<ExpanderComponent />);
     </script>
 </body>
 </html>
