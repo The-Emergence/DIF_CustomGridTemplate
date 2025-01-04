@@ -27,19 +27,36 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-    <!-- Simple React Test -->
+    <!-- Debug Script -->
     <script>
-        // Create element without JSX
-        const element = React.createElement(
-            'div',
-            { className: 'p-4 bg-white border rounded shadow-sm' },
-            React.createElement('h2', { className: 'text-xl font-bold' }, 'Basic React Test')
-        );
-
-        // Mount element
+        console.log('Script starting...');
+        
+        // Check if we have React
+        console.log('React version:', React.version);
+        
+        // Check if we can find our container
         const container = document.getElementById('expander-root');
-        const root = ReactDOM.createRoot(container);
-        root.render(element);
+        console.log('Found container:', container);
+
+        try {
+            // Create a simple element
+            const element = React.createElement(
+                'div',
+                { className: 'p-4 bg-blue-100' },
+                'React is working!'
+            );
+            
+            console.log('Created element:', element);
+
+            // Create root and render
+            const root = ReactDOM.createRoot(container);
+            console.log('Created root:', root);
+            
+            root.render(element);
+            console.log('Render called');
+        } catch (error) {
+            console.error('Error occurred:', error);
+        }
     </script>
 </body>
 </html>
