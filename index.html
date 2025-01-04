@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="css/expander.css">
     <link rel="stylesheet" href="css/tile-modern.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- React Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <div class="dif-container">
@@ -71,8 +78,7 @@
                       <div class="preview-word colorword">1760-1840</div>
                   </div>
                   
-                  <img src="https://cropper.watch.aetnd.com/public-content-aetn.video.aetnd.com/video-thumbnails/AETN-History_VMS/21/133/History_Andrew_Jackson_Defends_New_Orleans_1812_rev_SF_HD_1104x622-16x9.jpg
-                  " alt="Industrial Revolution">
+                  <img src="https://cropper.watch.aetnd.com/public-content-aetn.video.aetnd.com/video-thumbnails/AETN-History_VMS/21/133/History_Andrew_Jackson_Defends_New_Orleans_1812_rev_SF_HD_1104x622-16x9.jpg" alt="Industrial Revolution">
                   <div class="image-overlay"></div>
                   <div class="image-content">
                       <span class="image-tag">Historical Era</span>
@@ -84,14 +90,43 @@
           </div>
         </div>
 
-        <!-- Expander Container -->
-        <div class="dif-expander">
-            <!-- Content will be dynamically injected here -->
-        </div>
+        <!-- React Mount Point -->
+        <div id="expander-root"></div>
     </div>
 
-    <!-- Core JavaScript -->
-    <script type="module" src="js/expander.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <!-- React Component -->
+    <script type="text/babel" src="js/ExpanderComponent.jsx"></script>
+    
+    <!-- React Initialization -->
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('expander-root'));
+        
+        document.querySelector('.dif-grid').addEventListener('click', (e) => {
+            const tile = e.target.closest('.dif-tile');
+            if (tile) {
+                const content = {
+                    type: tile.dataset.recordType,
+                    subject: tile.querySelector('.preview-word.subject')?.textContent,
+                    class: tile.querySelector('.preview-word.class')?.textContent,
+                    description: "This comprehensive and authoritative history of the War of 1812, thoroughly revised for the 200th anniversary of the historic conflict, is a myth-shattering study that will inform and entertain students, historians, and general readers alike. Donald R. Hickey explores the military, diplomatic, and domestic history of our second war with Great Britain, bringing the study up to date with recent scholarship on all aspects of the war, from the Gulf of Mexico to Canada. The newly expanded The War of 1812: A Forgotten Conflict, Bicentennial Edition includes additional information on the British forces, American Indians, and military operations such as the importance of logistics and the use and capabilities of weaponry.",
+                    breadcrumbs: [tile.querySelector('.preview-word.breadcrumb')?.textContent],
+                    colorWords: [tile.querySelector('.preview-word.colorword')?.textContent],
+                    links: [
+                        { text: "Related Documents", url: "#", type: "reference" },
+                        { text: "Purchase Book", url: "#", type: "purchase" }
+                    ],
+                    image: tile.querySelector('img')?.src || "/api/placeholder/400/320"
+                };
+
+                root.render(
+                    <Expander 
+                        isOpen={true}
+                        content={content}
+                        onClose={() => root.render(null)}
+                    />
+                );
+            }
+        });
+    </script>
 </body>
 </html>

@@ -28,8 +28,7 @@ const ShareMenu = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    
-<div ref={menuRef} className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-10">
+    <div ref={menuRef} className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-10">
       <div className="flex flex-col gap-2">
         {shareOptions.map(({ icon: Icon, label, action }) => (
           <button
@@ -46,7 +45,6 @@ const ShareMenu = ({ isOpen, onClose }) => {
         ))}
       </div>
     </div>
-
   );
 };
 
@@ -99,7 +97,7 @@ const Expander = ({ isOpen, content, onClose }) => {
   return (
     <div 
       className={`relative w-full overflow-hidden transition-all duration-300 ease-in-out bg-white opacity-0 
-        ${isOpen ? 'opacity-100 my-3 border border-gray-200 rounded-lg' : 'm-0'}`}
+        ${isOpen ? 'opacity-100 my-3 border border-gray-200' : 'm-0'}`}
       style={{ height }}
     >
       <div ref={contentRef} className="p-4">
@@ -118,21 +116,21 @@ const Expander = ({ isOpen, content, onClose }) => {
                 className={isBookmarked ? 'text-blue-500 fill-current' : 'text-gray-600'} 
               />
             </button>
-            <div className="relative">
+            <div className="relative flex items-center gap-2">
               <button
                 onClick={() => setShowShare(!showShare)}
-                className="p-1.5 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                className="p-1.5 hover:bg-gray-100 rounded-full transition-colors duration-200 relative"
               >
                 <Share2 size={16} className="text-gray-600" />
               </button>
+              <button
+                onClick={onClose}
+                className="p-1.5 hover:bg-gray-100 rounded-full transition-colors duration-200"
+              >
+                <X size={16} className="text-gray-600" />
+              </button>
               <ShareMenu isOpen={showShare} onClose={() => setShowShare(false)} />
             </div>
-            <button
-              onClick={onClose}
-              className="p-1.5 hover:bg-gray-100 rounded-full transition-colors duration-200"
-            >
-              <X size={16} className="text-gray-600" />
-            </button>
           </div>
         </div>
 
@@ -176,7 +174,7 @@ const Expander = ({ isOpen, content, onClose }) => {
               onAddToAttractor={handleAddToAttractor}
               onClick={handleRDFClick}
             />
-            {content.breadcrumbs.map((tag, index) => (
+            {content.breadcrumbs?.map((tag, index) => (
               <RDFTag 
                 key={index}
                 text={tag}
@@ -201,38 +199,4 @@ const Expander = ({ isOpen, content, onClose }) => {
   );
 };
 
-const ExpanderDemo = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const mockContent = {
-    type: "Product",
-    subject: "Industrial Revolution",
-    class: "Historical Era",
-    description: "This comprehensive and authoritative history of the War of 1812, thoroughly revised for the 200th anniversary of the historic conflict, is a myth-shattering study that will inform and entertain students, historians, and general readers alike. Donald R. Hickey explores the military, diplomatic, and domestic history of our second war with Great Britain, bringing the study up to date with recent scholarship on all aspects of the war, from the Gulf of Mexico to Canada. The newly expanded The War of 1812: A Forgotten Conflict, Bicentennial Edition includes additional information on the British forces, American Indians, and military operations such as the importance of logistics and the use and capabilities of weaponry.",
-    breadcrumbs: ["Manufacturing", "1760-1840"],
-    links: [
-      { text: "Related Documents", url: "#", type: "reference" },
-      { text: "Purchase Book", url: "#", type: "purchase" }
-    ],
-    image: "/api/placeholder/400/320"
-  };
-
-  return (
-    <div className="p-4">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="px-3 py-1.5 bg-blue-500 text-white rounded-md mb-3 text-sm"
-      >
-        Toggle Expander
-      </button>
-      
-      <Expander
-        isOpen={isOpen}
-        content={mockContent}
-        onClose={() => setIsOpen(false)}
-      />
-    </div>
-  );
-};
-
-export default ExpanderDemo;
+export default Expander;
