@@ -6,16 +6,17 @@
     <title>Deep Inquiry Framework - React Test</title>
     
     <!-- Styles -->
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/tile.css">
+    <link rel="stylesheet" href="css/expander.css">
+    <link rel="stylesheet" href="css/tile-modern.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
-    <style>
-        /* Debug styles */
-        #expander-root {
-            min-height: 100px;
-            border: 2px dashed red;
-            margin: 20px;
-        }
-    </style>
+    <!-- React Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <div class="dif-container">
@@ -23,33 +24,51 @@
             <h1 class="dif-modern-title">War of 1812 - React Test</h1>
         </header>
         
-        <!-- Removed dif-expander class temporarily -->
-        <div id="expander-root">
-            <div>If you see this, React hasn't rendered yet</div>
+        <!-- Main Grid Container -->
+        <div class="dif-grid">
+            <!-- Your existing tiles here -->
         </div>
+
+        <!-- React Mount Point -->
+        <div id="expander-root" class="dif-expander"></div>
     </div>
 
-    <!-- React Dependencies -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- React Component -->
+    <script type="text/babel">
+        // Simple expander test
+        const Expander = () => {
+            return React.createElement(
+                'div',
+                { 
+                    className: 'w-full bg-white border border-gray-200 rounded-lg p-4 my-3'
+                },
+                [
+                    React.createElement('div', { 
+                        key: 'header',
+                        className: 'flex justify-between items-center mb-4'
+                    }, [
+                        React.createElement('div', { 
+                            key: 'type',
+                            className: 'px-2 py-0.5 text-xs border rounded border-blue-500 text-gray-700'
+                        }, 'Product'),
+                        React.createElement('div', {
+                            key: 'actions',
+                            className: 'flex items-center gap-2'
+                        }, [
+                            React.createElement('button', {
+                                key: 'close',
+                                className: 'w-6 h-6 flex items-center justify-center bg-gray-800/10 rounded-full'
+                            }, '×')
+                        ])
+                    ])
+                ]
+            );
+        };
 
-    <!-- Debug Script -->
-    <script>
-        console.log('Script starting...');
-        
-        // Create more visible test element
-        const element = React.createElement(
-            'div',
-            { 
-                className: 'p-8 bg-blue-500 text-white text-xl font-bold',
-                style: { margin: '20px' }
-            },
-            'React is working! (If you see this)'
-        );
-        
+        // Initialize
         const container = document.getElementById('expander-root');
         const root = ReactDOM.createRoot(container);
-        root.render(element);
+        root.render(React.createElement(Expander));
     </script>
 </body>
 </html>
