@@ -6,11 +6,16 @@
     <title>Deep Inquiry Framework - React Test</title>
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/tile.css">
-    <link rel="stylesheet" href="css/expander.css">
-    <link rel="stylesheet" href="css/tile-modern.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <style>
+        /* Debug styles */
+        #expander-root {
+            min-height: 100px;
+            border: 2px dashed red;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="dif-container">
@@ -18,8 +23,9 @@
             <h1 class="dif-modern-title">War of 1812 - React Test</h1>
         </header>
         
-        <div id="expander-root" class="dif-expander">
-            <!-- React will render here -->
+        <!-- Removed dif-expander class temporarily -->
+        <div id="expander-root">
+            <div>If you see this, React hasn't rendered yet</div>
         </div>
     </div>
 
@@ -31,32 +37,19 @@
     <script>
         console.log('Script starting...');
         
-        // Check if we have React
-        console.log('React version:', React.version);
+        // Create more visible test element
+        const element = React.createElement(
+            'div',
+            { 
+                className: 'p-8 bg-blue-500 text-white text-xl font-bold',
+                style: { margin: '20px' }
+            },
+            'React is working! (If you see this)'
+        );
         
-        // Check if we can find our container
         const container = document.getElementById('expander-root');
-        console.log('Found container:', container);
-
-        try {
-            // Create a simple element
-            const element = React.createElement(
-                'div',
-                { className: 'p-4 bg-blue-100' },
-                'React is working!'
-            );
-            
-            console.log('Created element:', element);
-
-            // Create root and render
-            const root = ReactDOM.createRoot(container);
-            console.log('Created root:', root);
-            
-            root.render(element);
-            console.log('Render called');
-        } catch (error) {
-            console.error('Error occurred:', error);
-        }
+        const root = ReactDOM.createRoot(container);
+        root.render(element);
     </script>
 </body>
 </html>
