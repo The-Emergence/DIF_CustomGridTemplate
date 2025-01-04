@@ -4,43 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Inquiry Framework - React Version</title>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/tile.css">
     <link rel="stylesheet" href="css/expander.css">
     <link rel="stylesheet" href="css/tile-modern.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
-    <!-- React Dependencies -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- React Dependencies - Note the order -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 </head>
 <body>
-    <!-- Same body content as your original index.html -->
     <div class="dif-container">
-        <!-- Copy all your existing content here -->
+        <header class="dif-header">
+            <h1 class="dif-modern-title">War of 1812 - React Test</h1>
+        </header>
         
-        <!-- Change only the expander container -->
-        <div id="expander-root" class="dif-expander">
-            <!-- React will render here -->
+        <!-- Copy your original grid content here -->
+        <div class="dif-grid">
+            <!-- Your existing tiles -->
         </div>
+
+        <!-- React mount point -->
+        <div id="expander-root" class="dif-expander"></div>
     </div>
 
-    <!-- React Component -->
+    <!-- Load Babel last -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- React Component - wrapped in DOMContentLoaded -->
     <script type="text/babel">
-        // First, let's test a simple React render
-        const SimpleTest = () => {
-            return (
-                <div className="p-4 bg-blue-100">
-                    <h2>React Test Component</h2>
-                </div>
-            );
-        };
+        // Wait for everything to load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple test component
+            function TestComponent() {
+                return (
+                    <div className="p-4 bg-blue-100">
+                        <h2>React is working!</h2>
+                        <p>If you see this, React is properly set up.</p>
+                    </div>
+                );
+            }
 
-        // Test the render
-        const root = ReactDOM.createRoot(document.getElementById('expander-root'));
-        root.render(<SimpleTest />);
+            // Mount the test component
+            const root = ReactDOM.createRoot(document.getElementById('expander-root'));
+            root.render(<TestComponent />);
+        });
     </script>
 </body>
 </html>
