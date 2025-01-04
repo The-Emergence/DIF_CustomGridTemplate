@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="css/tile-modern.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
-    <!-- React Dependencies - Note the order -->
+    <!-- React Dependencies -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <div class="dif-container">
@@ -22,36 +23,35 @@
             <h1 class="dif-modern-title">War of 1812 - React Test</h1>
         </header>
         
-        <!-- Copy your original grid content here -->
-        <div class="dif-grid">
-            <!-- Your existing tiles -->
+        <div id="expander-root" class="dif-expander">
+            <!-- React will render here -->
         </div>
-
-        <!-- React mount point -->
-        <div id="expander-root" class="dif-expander"></div>
     </div>
 
-    <!-- Load Babel last -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- React Component - wrapped in DOMContentLoaded -->
+    <!-- Basic test to ensure React is working -->
     <script type="text/babel">
-        // Wait for everything to load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Simple test component
-            function TestComponent() {
-                return (
-                    <div className="p-4 bg-blue-100">
-                        <h2>React is working!</h2>
-                        <p>If you see this, React is properly set up.</p>
-                    </div>
-                );
-            }
+        // Basic test component
+        const TestComponent = () => {
+            const [count, setCount] = React.useState(0);
+            
+            return (
+                <div className="p-4 bg-white border rounded shadow-sm">
+                    <h2 className="text-xl font-bold mb-4">React Test Component</h2>
+                    <p className="mb-4">Count: {count}</p>
+                    <button 
+                        className="px-4 py-2 bg-blue-500 text-white rounded"
+                        onClick={() => setCount(c => c + 1)}
+                    >
+                        Click me
+                    </button>
+                </div>
+            );
+        };
 
-            // Mount the test component
-            const root = ReactDOM.createRoot(document.getElementById('expander-root'));
-            root.render(<TestComponent />);
-        });
+        // Immediately mount component
+        const container = document.getElementById('expander-root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<TestComponent />);
     </script>
 </body>
 </html>
