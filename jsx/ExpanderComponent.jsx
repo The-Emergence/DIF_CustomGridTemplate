@@ -28,23 +28,30 @@ const ShareMenu = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div ref={menuRef} className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-10">
-      <div className="flex flex-col gap-2">
-        {shareOptions.map(({ icon: Icon, label, action }) => (
-          <button
-            key={label}
-            onClick={() => {
-              action();
-              onClose();
-            }}
-            className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-100 rounded text-sm w-full"
-          >
-            <Icon size={14} />
-            <span>{label}</span>
-          </button>
-        ))}
-      </div>
-    </div>
+    
+<div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-10">
+  <div className="flex items-center gap-2 mb-2"> {/* New container for Share and X */}
+    <Share2 className="w-3.5 h-3.5 text-gray-600" />
+    <X onClick={onClose} className="w-3.5 h-3.5 text-gray-600 cursor-pointer" />
+  </div>
+  <div className="flex flex-col gap-2">
+    {shareOptions.map(({ icon: Icon, label, action }) => (
+      <button
+        key={label}
+        onClick={() => {
+          action();
+          onClose();
+        }}
+        className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-100 rounded text-sm w-full"
+      >
+        <Icon size={14} />
+        <span>{label}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+
   );
 };
 
