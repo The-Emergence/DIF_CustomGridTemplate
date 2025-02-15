@@ -1,0 +1,75 @@
+Styles for Grid Tile without Phots
+
+import React from 'react';
+
+const EnhancedWarOf1812Tile = () => {
+  return (
+    <div className="p-8 max-w-md mx-auto">
+      <div className="relative bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 p-6 pt-14">
+        {/* Product Type Tag */}
+        <div className="absolute top-4 left-4 z-10 px-3 py-1 text-sm font-medium 
+          bg-white border-2 border-blue-500 rounded-full shadow-sm text-gray-700">
+          Product
+        </div>
+
+        {/* Main Title */}
+        <h3 className="text-xl font-medium text-gray-800 mb-4">
+          The War of 1812: A forgotten conflict
+        </h3>
+
+        {/* Book Type & Region - Side by side */}
+        <div className="flex gap-2 mb-4 flex-wrap">
+          <span className="inline-block px-3 py-1 text-sm bg-gray-100 rounded-full">
+            Book Type: Historical Non Fiction
+          </span>
+          <span className="inline-block px-3 py-1 text-sm bg-gray-100 rounded-full">
+            North America
+          </span>
+        </div>
+
+        {/* Subject Area */}
+        <div className="border-t border-gray-100 py-3 mb-3">
+          <div className="inline-block px-3 py-1 text-sm bg-gray-50 rounded-full">
+            Military Strategy
+          </div>
+        </div>
+
+        {/* Key Figure */}
+        <div className="border-t border-gray-100 py-3">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-500">Key Figure:</span>
+            <span className="text-sm font-medium text-gray-700">
+              Sir George Prevost
+            </span>
+          </div>
+        </div>
+
+        {/* Major Event */}
+        <div className="border-t border-gray-100 py-3">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-500">Major Event:</span>
+            <span className="text-sm font-medium text-gray-700">
+              Burning of Washington
+            </span>
+          </div>
+        </div>
+
+        {/* Conflict Elements */}
+        <div className="border-t border-gray-100 pt-3">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-500">Conflict:</span>
+            <div className="flex gap-2">
+              {['Tension', 'Battles', 'Alliances'].map((item, index) => (
+                <span key={index} className="text-sm px-2 py-1 bg-gray-50 rounded-full text-gray-700">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EnhancedWarOf1812Tile;
